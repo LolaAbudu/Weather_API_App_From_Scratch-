@@ -35,10 +35,12 @@ public class WeatherViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(final Periods periods) {
-        dateTextView.setText(periods.getDateTimeISO());
 
+        String dateString = "Date: " + periods.getDateTimeISO().substring(0,10);
         String maxTempString = "High: " + String.valueOf(periods.getMaxTempF() + " F");
         String minTempString = "Low: " + String.valueOf(periods.getMinTempF() + "F");
+
+        dateTextView.setText(dateString);
         maxTempTextView.setText(maxTempString);
         minTempTextView.setText(minTempString);
 
@@ -48,17 +50,16 @@ public class WeatherViewHolder extends RecyclerView.ViewHolder {
             Picasso.get().load(R.drawable.wintrymix).into(iconImageView);
         }
 
-//        Picasso.get().load(periods.getIcon()).into(iconImageView);
 
 //        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 //                if(isChecked){
-//                    toggleButton.setTextOff("Show Farenheit");
+//                    //toggleButton.setTextOff("Show Farenheit");
 //                    maxTempTextView.setText(periods.getMaxTempC());
 //                    minTempTextView.setText(periods.getMinTempC());
 //                }else{
-//                    toggleButton.setTextOn("Show Celcius");
+//                    //toggleButton.setTextOn("Show Celcius");
 //                    maxTempTextView.setText(periods.getMaxTempF());
 //                    minTempTextView.setText(periods.getMinTempF());
 //                }
